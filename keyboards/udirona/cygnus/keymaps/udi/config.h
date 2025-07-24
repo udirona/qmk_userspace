@@ -1,8 +1,9 @@
 /*
-This is the c configuration file for the keymap
+This is the c configuration file for the keymap udi cygnus
 
 Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
+Copyright 2025 Udirona
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,9 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define USE_MATRIX_I2C
 
-//#define QUICK_TAP_TERM 0
-//#define TAPPING_TERM 100
-
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
@@ -42,5 +40,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_VAL_STEP 17
 #endif
 
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+//#define CHORDAL_HOLD
+//#define PERMISSIVE_HOLD
+#define TAPPING_TERM 200
+//QUICK_TAP_TERM must be < TAPPING_TERM
+#define QUICK_TAP_TERM 120
+
+// disable Holds on fast typping
+//#define FLOW_TAP_TERM 150
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+

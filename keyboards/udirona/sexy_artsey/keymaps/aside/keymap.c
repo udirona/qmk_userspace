@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
     BASE_2_1, BASE_2_2, BASE_2_3, BASE_2_4,
  //---------|---------|---------|---------|
-    EN_MUTE,        IT,       OT,    KC_NO
+    EN_MUTE,        IT,       OT,  XXXXXXX
     ),
 
 [l_number] = LAYOUT_ortho_3x4(
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
         KC_5,     KC_6,     KC_7,     KC_8,
  //---------|---------|---------|---------|
-     KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_NO
+     KC_TRNS,  KC_TRNS,  KC_TRNS,  XXXXXXX
     ),
 
 [l_symbol] = LAYOUT_ortho_3x4(
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
      KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,
  //---------|---------|---------|---------|
-     KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_NO
+     KC_TRNS,  KC_TRNS,  KC_TRNS,  XXXXXXX
     ),
 
 [l_navi] = LAYOUT_ortho_3x4(
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
        KC_NO,  KC_LEFT,  KC_DOWN, KC_RIGHT,
  //---------|---------|---------|---------|
-       KC_NO,    KC_NO,   KC_DEL,    KC_NO
+       KC_NO,    KC_NO,   KC_DEL,  XXXXXXX
     ),
 
 [l_macro] = LAYOUT_ortho_3x4(
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
        KC_NO,  CG_LEFT,  DESKTOP, CG_RIGHT,
  //---------|---------|---------|---------|
-       KC_NO,    KC_NO,    KC_NO,    KC_NO
+       KC_NO,    KC_NO,    KC_NO,  XXXXXXX
     ),
 
 [l_sys] = LAYOUT_ortho_3x4(
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  //---------|---------|---------|---------|
        KC_NO,    KC_NO,    KC_NO,    KC_NO,
  //---------|---------|---------|---------|
-       KC_NO,    KC_NO,    KC_NO,    KC_NO
+       KC_NO,    KC_NO,    KC_NO,  XXXXXXX
     )
 };
 
@@ -86,7 +86,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [l_symbol] = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
     [l_navi]   = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
     [l_macro]  = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [l_sys]   = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) }
+    [l_sys]    = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) }
 };
 #endif
 

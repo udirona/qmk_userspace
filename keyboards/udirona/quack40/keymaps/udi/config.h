@@ -15,7 +15,11 @@
 #pragma once
 
 #define TAPPING_TERM 200
+#define QUICK_TAP_TERM 120
 
-#define PERMISSIVE_HOLD
-#define CHORDAL_HOLD
+// disable Holds on fast typping
+#define FLOW_TAP_TERM 150
 
+//#define PERMISSIVE_HOLD
+//#define CHORDAL_HOLD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD

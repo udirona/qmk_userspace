@@ -1,4 +1,4 @@
-/* Copyright 2021 kb-elmo<mail@elmo.space>
+/* Copyright 2025 udirona
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -6,7 +6,7 @@
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without even the impliesd warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
@@ -20,70 +20,106 @@
 #define DESKTOP G(KC_D)
 #define LOCKWIN G(KC_L)
 
-// ; : KC_SCLN
-// [ ] KC RBRC u. LBRC
+#define LT_LOW_D LT(LOWER, KC_DOT)
+#define RC_ENT RCTL_T(KC_ENT)
+#define CC_A LCTL_T(KC_A)
+#define LT_LOW_Z LT(LOWER, KC_Z)
+
+//home row mod colmak
+#define CC_O LCTL_T(KC_O)
+
+//home row mods default
+#define CC_F LSFT_T(KC_F)
+#define CC_J RSFT_T(KC_J)
+//home row mods colmak
+#define CC_T LSFT_T(KC_T)
+#define CC_N RSFT_T(KC_N)
+
+#define CA_F1 C(A(KC_F1))
+#define CA_F2 C(A(KC_F2))
+#define CA_F3 C(A(KC_F3))
+#define C__F1 C(KC_F1)
+#define C__F2 C(KC_F2)
+#define C__F3 C(KC_F3)
+#define C__F9 C(KC_F9)
+#define C__F12 C(KC_F12)
+#define CG_L C(G(KC_LEFT))
+#define CG_R C(G(KC_RGHT))
 
 const uint16_t PROGMEM cm_tab[]  = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM cm_esc[]  = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM cm_bspc[] = {KC_O, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(cm_bspc, KC_BSPC),
-    COMBO(cm_esc,  KC_ESC),
-    COMBO(cm_tab,  KC_TAB),
+//    COMBO(cm_bspc, KC_BSPC),
+//    COMBO(cm_esc,  KC_ESC),
+//    COMBO(cm_tab,  KC_TAB),
 };
 
 enum layers {
     BASE,
     COLMAK,
     LOWER,
-    RAISE,
-    SYMBOL,
-    SYS
+    SYMBL,
+    MACRO
 };
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_long_space(
-        KC_Q,             KC_W,         KC_E,         KC_R,         KC_T,       KC_Y,       KC_U,         KC_I,         KC_O,         KC_P,
-        LCTL_T(KC_A),     KC_S,         KC_D,         LSFT_T(KC_F), KC_G,       KC_H,       RSFT_T(KC_J), KC_K,         KC_L,         RCTL_T(KC_ENT),
-        LT(LOWER,KC_Z),   KC_X,         KC_C,         KC_V,         KC_B,       KC_N,       KC_M,         KC_COMM,                    LT(LOWER,KC_DOT),
-        MO(RAISE),        KC_LGUI,      KC_LALT,        KC_SPC,                             KC_RALT,      MO(SYS),                    MO(SYMBOL)
+  //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,
+  //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+         CC_A,     KC_S,    KC_D,    CC_F,    KC_G,    KC_H,    CC_J,    KC_K,    KC_L,  RC_ENT,
+  //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
+          LT_LOW_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,     LT_LOW_D,
+  //|---------+---------+---------+------------------------------+---------+---------+---------|
+     MO(SYMBL),  KC_LGUI,   KC_LALT,        LSFT_T(KC_SPC),         KC_RALT, MO(MACRO),MO(SYMBL)
     ),
 
     [COLMAK] = LAYOUT_long_space(
-        KC_Q,             KC_W,         KC_F,         KC_P,         KC_B,       KC_J,       KC_L,         KC_U,         KC_Y,         KC_BSPC,
-        LCTL_T(KC_A),     KC_R,         KC_S,         LSFT_T(KC_T), KC_G,       KC_M,       RSFT_T(KC_N), KC_E,         KC_I, RCTL_T(KC_ENT),
-        LT(LOWER,KC_Z),   KC_X,         KC_C,         KC_D,         KC_V,       KC_K,       KC_H,         KC_COMM,                    LT(LOWER,KC_DOT),
-        MO(RAISE),        KC_LGUI,      KC_LALT,        KC_SPC,                             KC_RALT,      MO(SYS),                    MO(SYMBOL)
+  //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+         KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,   KC_ENT,
+  //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+          CC_A,    KC_R,    KC_S,    CC_T,    KC_G,    KC_M,    CC_N,    KC_E,    KC_I,    CC_O,
+  //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
+          LT_LOW_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H, KC_COMM,     LT_LOW_D,
+  //|---------+---------+---------+------------------------------+---------+---------+---------|
+     MO(SYMBL),  KC_LGUI,  KC_LALT,        LSFT_T(KC_SPC),          KC_RALT, MO(MACRO),MO(SYMBL)
     ),
 
     [LOWER] = LAYOUT_long_space(
-        KC_1,             KC_2,         KC_3,         KC_4,         KC_5,       KC_6,       KC_7,         KC_8,         KC_9,         KC_0,
-        KC_TAB,           KC_HOME,      KC_PGUP,      KC_PGDN,      KC_END,     KC_LEFT,    KC_DOWN,      KC_UP,        KC_RGHT,      KC_BSPC,
-        KC_ESC,           KC_MINS,      KC_EQL,       KC_LBRC,      KC_RBRC,    KC_BSLS,    KC_SCLN,      KC_QUOT,                    KC_SLSH,
-        KC_TRNS,          KC_TRNS,      KC_TRNS,             KC_TRNS,                       KC_TRNS,      KC_TRNS,                    KC_TRNS
+  //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+         KC_1,    KC_2,     KC_3,   KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,     KC_0,
+  //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+        KC_TAB, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_DEL,
+  //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
+            KC_ESC, _______,  _______, _______, _______, _______, _______, _______,     _______,
+  //|---------+---------+---------+------------------------------+---------+---------+---------|
+       _______,  _______,  _______,         KC_BSPC,                _______,  _______,   _______
     ),
 
-    [RAISE] = LAYOUT_long_space(
-        KC_F1,            KC_F2,       KC_F3,         KC_F4,        KC_F5,      KC_F6,      KC_F7,        KC_F8,        KC_F9,        KC_F10,
-        KC_GRAVE,         S(KC_GRAVE), KC_TRNS,       KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_DEL,
-        KC_TRNS,          S(KC_MINS),  S(KC_EQL),     S(KC_LBRC),   S(KC_RBRC), S(KC_BSLS), S(KC_SCLN),   S(KC_QUOT),                 S(KC_SLSH),
-        KC_TRNS,          KC_TRNS,     KC_TRNS,              KC_TRNS,                       KC_TRNS,      KC_TRNS,                    KC_TRNS
+    [SYMBL] = LAYOUT_long_space(
+  //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+      S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),  S(KC_0),
+  //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+      KC_GRAVE, KC_TILD, KC_SCLN, KC_QUOT, KC_DQUO, KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_COLN,
+  //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
+           KC_LCBR, KC_RCBR, KC_QUES, KC_BSLS, XXXXXXX, KC_UNDS, KC_PLUS, KC_SLSH,      KC_PIPE,
+  //|---------+---------+---------+------------------------------+---------+---------+---------|
+       _______,  _______,  _______,         KC_BSPC,                _______,  _______,   _______
     ),
 
-    [SYMBOL] = LAYOUT_long_space(
-        S(KC_1),          S(KC_2),      S(KC_3),      S(KC_4),      S(KC_5),    S(KC_6),    S(KC_7),      S(KC_8),      S(KC_9),      S(KC_0),
-        KC_TAB,           KC_HOME,      KC_PGUP,      KC_PGDN,      KC_END,     KC_LEFT,    KC_DOWN,      KC_UP,        KC_RGHT,      KC_BSPC,
-        KC_ESC,           KC_MINS,      KC_EQL,       KC_LBRC,      KC_RBRC,    KC_BSLS,    KC_SCLN,      KC_QUOT,                    KC_SLSH,
-        KC_TRNS,          KC_TRNS,      KC_TRNS,             KC_TRNS,                       KC_TRNS,      KC_TRNS,                    KC_TRNS
-    ),
-
-    [SYS] = LAYOUT_long_space(
-        QK_BOOT,          C(A(KC_F1)), C(A(KC_F2)),   C(A(KC_F3)), KC_TRNS, KC_TRNS,        KC_F9,         KC_F10,      C(KC_F9),     C(KC_F12),
-        DF(COLMAK),       C(KC_F1),    C(KC_F2),      C(KC_F3),    KC_TRNS, KC_TRNS,        KC_TRNS,       KC_TRNS,     KC_TRNS,      KC_TRNS,
-        DF(BASE),         KC_TRNS,     KC_TRNS,       KC_TRNS,     KC_TRNS, C(G(KC_LEFT)),  C(G(KC_RGHT)), KC_TRNS,                   KC_TRNS,
-        KC_TRNS,          KC_TRNS,     KC_TRNS,        KC_TRNS,             KC_TRNS,                       KC_TRNS,                   KC_TRNS
+//CA_F1,   CA_F2,   CA_F3  C__F9,   C__F12,
+    [MACRO] = LAYOUT_long_space(
+  //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F12,
+  //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+     DF(COLMAK),C(KC_F1),C(KC_F2),C(KC_F3),_______, _______,  KC_F10,  KC_F11,   C__F9,  C__F12,
+  //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
+          DF(BASE), _______, _______, _______, _______,    CG_L,    CG_R, _______,      _______,
+  //|---------+---------+---------+------------------------------+---------+---------+---------|
+       QK_BOOT,  _______,  _______,        _______,                 _______,  _______,  _______
     ),
 };
 
