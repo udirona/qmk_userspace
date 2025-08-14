@@ -20,24 +20,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
+//#define CHORDAL_HOLD
+//#define PERMISSIVE_HOLD
+#define TAPPING_TERM 200
 
-//#define QUICK_TAP_TERM 0
-//#define TAPPING_TERM 100
+// Trigger hold after double tap => key repeat instead of LT/MT
+//QUICK_TAP_TERM must be < TAPPING_TERM
+#define QUICK_TAP_TERM 120
 
-#ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_BREATHING
-    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-    #define RGBLIGHT_EFFECT_SNAKE
-    #define RGBLIGHT_EFFECT_KNIGHT
-    #define RGBLIGHT_EFFECT_CHRISTMAS
-    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-    #define RGBLIGHT_EFFECT_RGB_TEST
-    #define RGBLIGHT_EFFECT_ALTERNATING
-    #define RGBLIGHT_EFFECT_TWINKLE
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
+// disable Holds on fast typping
+//#define FLOW_TAP_TERM 150
+
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+
+
+#define ENABLE_RGB_MATRIX_ALPHAS_MODS
+#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_ALPHAS_MODS
+#define RGB_MATRIX_DEFAULT_HUE 201
+#define RGB_MATRIX_DEFAULT_SAT 10
+#define RGB_MATRIX_DEFAULT_SPD 128
+
+
+
+#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+
+/* Select hand configuration */
+
+#define MASTER_LEFT
+// #define MASTER_RIGHT
+// #define EE_HANDS
+
+// this nearly max out ram
+#define SPLIT_WATCHDOG_ENABLE
+#define SPLIT_USB_TIMEOUT 500
+// // #define USB_SUSPEND_WAKEUP_DELAY 5000
