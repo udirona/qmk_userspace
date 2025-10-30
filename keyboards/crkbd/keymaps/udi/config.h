@@ -21,8 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 //#define CHORDAL_HOLD
-//#define PERMISSIVE_HOLD
-#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 190
+//#define RETRO_TAPPING
 
 // Trigger hold after double tap => key repeat instead of LT/MT
 //QUICK_TAP_TERM must be < TAPPING_TERM
@@ -35,15 +36,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 
-
 #define ENABLE_RGB_MATRIX_ALPHAS_MODS
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_ALPHAS_MODS
 #define RGB_MATRIX_DEFAULT_HUE 201
 #define RGB_MATRIX_DEFAULT_SAT 10
 #define RGB_MATRIX_DEFAULT_SPD 128
 
-
-
+#define OLED_TIMEOUT 4000
+#define OLED_FADE_OUT
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
 /* Select hand configuration */
