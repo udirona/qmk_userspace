@@ -20,9 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "oled_graphics.c"
 
-
 #define CC_THL LT(LOWER,KC_ESC)
-#define CC_QUOT MT(MOD_LCTL | MOD_RCTL, KC_QUOT)
+#define CC_QUOT MT(MOD_LCTL, KC_QUOT)
 #define CC_SCLN MT(MOD_LALT, KC_SCLN)
 #define CC_A MT(MOD_LALT, KC_A)
 
@@ -69,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    CC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, CC_SCLN, CC_QUOT,
+      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, CC_SCLN, CC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -86,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, KC_TILD,  KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_INS,  KC_APP, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,     _______, _______, _______
+                                          _______, _______, _______,    KC_LGUI, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -104,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [ADJUST] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,                      RM_HUEU, RM_SATU, RM_SPDU, XXXXXXX, XXXXXXX, XXXXXXX,
+      QK_BOOT, XXXXXXX,    KC_1,    KC_2,    KC_3, XXXXXXX,                      RM_HUEU, RM_SATU, RM_SPDU, RM_VALU, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,                      RM_HUED, RM_SATD, RM_SPDD, XXXXXXX, _______, _______,
+      XXXXXXX, XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,                      RM_HUED, RM_SATD, RM_SPDD, RM_VALD, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX,    KC_7,    KC_8,    KC_9,    KC_0,                      XXXXXXX, XXXXXXX, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -120,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,    A_F4, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLD,                      CG_LEFT,   AG_UP, XXXXXXX, CG_RGHT, C(KC_PMNS), S(C(KC_PMNS)),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      C_CADEL,    C_F4, XXXXXXX, XXXXXXX, XXXXXXX, G(C(A(KC_1))),                   G_LEFT,    G_UP,  G_DOWN,  G_RGHT, XXXXXXX, XXXXXXX,
+      C_CADEL,    C_F4, XXXXXXX, XXXXXXX, G(C(A(KC_2))), G(C(A(KC_1))),           G_LEFT,    G_UP,  G_DOWN,  G_RGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           MS_BTN3, MS_BTN1, MS_BTN2,     KC_ENT, MO(ADJUST), KC_RALT
 
@@ -197,19 +196,6 @@ static void oled_render_layer_state(void) {
     }
 }
 
-void render_boot(bool bootloader) {
-    oled_clear();
-    for (int i = 0; i < 16; i++) {
-        oled_set_cursor(0, i);
-        if (bootloader) {
-            oled_write_P(PSTR("Awaiting New Firmware "), false);
-        } else {
-            oled_write_P(PSTR("Rebooting "), false);
-        }
-    }
-    oled_render_dirty(true);
-}
-
 bool oled_task_user(void) {
     // return false - final rendering
     //        true  - oled_taks_kb
@@ -223,6 +209,20 @@ bool oled_task_user(void) {
     }
     return true;
 }
+
+void render_boot(bool bootloader) {
+    oled_clear();
+    for (int i = 0; i < 16; i++) {
+        oled_set_cursor(0, i);
+        if (bootloader) {
+            oled_write_P(PSTR("Awaiting New Firmware "), false);
+        } else {
+            oled_write_P(PSTR("Rebooting "), false);
+        }
+    }
+    oled_render_dirty(true);
+}
+
 
 bool shutdown_user(bool jump_to_bootloader) {
     render_boot(jump_to_bootloader);
@@ -252,11 +252,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_scan_user(void) {
   if (mouse_jiggle_mode) {
     SEND_STRING(SS_DELAY(10));
-    tap_code(KC_MS_UP);
-    tap_code(KC_MS_DOWN);
+    tap_code(MS_UP);
+    tap_code(MS_DOWN);
     SEND_STRING(SS_DELAY(30));
-    tap_code(KC_MS_LEFT);
-    tap_code(KC_MS_RIGHT);
+    tap_code(MS_LEFT);
+    tap_code(MS_RGHT);
   }
 }
 

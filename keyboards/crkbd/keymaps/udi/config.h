@@ -25,7 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 190
 //#define RETRO_TAPPING
 
-// Trigger hold after double tap => key repeat instead of LT/MT
+//https://docs.qmk.fm/tap_hold#quick-tap-term
+//Trigger hold key after double tap instead of hold (LT/MT)
 //QUICK_TAP_TERM must be < TAPPING_TERM
 #define QUICK_TAP_TERM 120
 
@@ -42,9 +43,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_DEFAULT_SAT 10
 #define RGB_MATRIX_DEFAULT_SPD 128
 
-#define OLED_TIMEOUT 4000
+#define OLED_TIMEOUT 5000
 #define OLED_FADE_OUT
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+#define OLED_FONT_H "mlcdfont.c"
 
 /* Select hand configuration */
 

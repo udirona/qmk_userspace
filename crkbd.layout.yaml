@@ -1,0 +1,98 @@
+layout: {qmk_keyboard: crkbd/r2g, layout_name: LAYOUT_split_3x6_3}
+layers:
+  Base:
+  - ['$$mdi:keyboard-tab$$', Q, W, E, R, T, Y, U, I, O]
+  - [P, '$$mdi:backspace$$', Ctrl, A, S, D, F, G, H, J]
+  - - K
+    - L
+    - {t: ;, h: Alt}
+    - {t: '''', h: Ctrl}
+    - ⇧
+    - Z
+    - X
+    - C
+    - V
+    - B
+  - [N, M, ',', ., /, ⇧, '$$mdi:penguin$$', Alt, {t: Esc, h: Lower}, {t: '$$mdi:keyboard-return$$', h: Sys}]
+  - [{t: ␣, h: Raise}, Alt Gr]
+  Lower:
+  - ['$$mdi:keyboard-tab$$', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  - ['0', '$$mdi:backspace-reverse$$', Ctrl, Print, '$$mdi:ray-start$$', Pg↑, Pg↓, '$$mdi:ray-end$$', ←, ↓]
+  - - ↑
+    - →
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ⇧
+    - '~'
+    - '`'
+    - ''
+    - ''
+    - ''
+  - - Ins
+    - $$mdi:apps$$
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - $$mdi:penguin$$
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  Raise:
+  - [F10, F1, F2, F3, F4, F5, F6, F7, F8, F9]
+  - [F11, F12, Ctrl, '!', ^, '#', '*', $, '-', '=']
+  - - '['
+    - ']'
+    - ':'
+    - {t: \, h: Ctrl}
+    - ⇧
+    - '@'
+    - '&'
+    - '%'
+    - (
+    - )
+  - - _
+    - +
+    - '{'
+    - '}'
+    - '|'
+    - ⇧
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  Adjust:
+  - [QK BOOT, '', '1', '2', '3', '', RM HUEU, RM SATU, RM SPDU, RM VALU]
+  - ['', '', '', '', '4', '5', '6', '', RM HUED, RM SATD]
+  - - RM SPDD
+    - RM VALD
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - ''
+    - '7'
+    - '8'
+    - '9'
+    - '0'
+  - - ''
+    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  Sys:
+  - [QK BOOT, '', '', MS UP, '', MS WHLU, '$$mdi:ghost-outline$$', DT PRNT, DT UP, DT DOWN]
+  - [Ctl+ PPLS, Sft+Ctl+ PPLS, '', Alt+ F4, MS LEFT, MS DOWN, MS RGHT, MS WHLD, CG(←), AG(↑)]
+  - ['', CG(→), Ctl+ PMNS, Sft+Ctl+ PMNS, CA(Del), Ctl+ F4, '', '', GCA(2), GCA(1)]
+  - [G(←), G(↑), G(↓), G(→), '', '', MS BTN3, MS BTN1, MS BTN2, ⏎]
+  - [MO(ADJUST), Alt Gr]

@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 
+#define CC_THL LT(LOWER,KC_ESC)
 #define CC_ESC MT(MOD_LGUI,KC_ESC)
 #define CC_QUOT MT(MOD_LCTL | MOD_RCTL, KC_QUOT)
 #define CC_SCLN MT(MOD_LALT, KC_SCLN)
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT,   MO(LOWER),  CC_ESC,     CC_ENT,   CC_SPC, KC_RALT
+                                         KC_LALT,MO(LOWER),  CC_ESC,     CC_ENT,  CC_SPC, KC_RALT
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,    A_F4, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLD,                      CG_LEFT,   AG_UP, XXXXXXX, CG_RGHT, C(KC_PMNS), S(C(KC_PMNS)),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,    C_F4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       G_LEFT,    G_UP,  G_DOWN,  G_RGHT, XXXXXXX, XXXXXXX,
+      XXXXXXX,    C_F4, XXXXXXX, XXXXXXX, XXXXXXX, G(C(A(KC_1))),                 G_LEFT,    G_UP,  G_DOWN,  G_RGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           MS_BTN3, MS_BTN1, MS_BTN2,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'

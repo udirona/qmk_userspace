@@ -21,6 +21,12 @@ enum layers {
     l_sys
 };
 
+
+//const uint16_t PROGMEM test_cmb1[] = {BASE_1_1, BASE_2_2, COMBO_END};
+//combo_t key_combos[] = {
+//    COMBO(test_cmb1, OSM(MOD_LCTL)),
+//};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [l_base] = LAYOUT_ortho_3x4(
@@ -81,12 +87,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [l_base]   = { ENCODER_CCW_CW(KC_DOWN, KC_UP) },
-    [l_number] = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [l_symbol] = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [l_navi]   = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [l_macro]  = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [l_sys]    = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) }
+    [l_base]   = { ENCODER_CCW_CW(KC_UP, KC_DOWN) },
+    [l_number] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [l_symbol] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [l_navi]   = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [l_macro]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [l_sys]    = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
 };
 #endif
 
@@ -110,5 +116,26 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         break;
     }
   return state;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case CM_OSC:
+      if (record->event.pressed) {
+        add_oneshot_mods(MOD_BIT(KC_LCTL));
+      }
+      break;
+    case CM_OSA:
+      if (record->event.pressed) {
+        add_oneshot_mods(MOD_BIT(KC_LALT));
+      }
+      break;
+    case CM_OSS:
+      if (record->event.pressed) {
+        add_oneshot_mods(MOD_BIT(KC_RSFT));
+      }
+      break;
+  }
+  return true;
 }
 

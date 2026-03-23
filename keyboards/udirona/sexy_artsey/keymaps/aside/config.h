@@ -1,2 +1,5 @@
 #define COMBO_VARIABLE_LEN
 #define COMBO_TERM 50
+
+//#define COMBO_MUST_HOLD_MODS
+#define COMBO_HOLD_TERM 350
