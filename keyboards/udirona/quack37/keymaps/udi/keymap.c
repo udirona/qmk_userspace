@@ -60,8 +60,8 @@ enum layers {
     BASE,
     COLMAK,
     LOWER,
-    SYMBL,
-    MACRO
+    RAISE,
+    SYS
 };
 
 
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
           LT_LOW_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,     LT_LOW_D,
   //|---------+---------+---------+------------------------------+---------+---------+---------|
-     MO(SYMBL),  KC_LGUI,   KC_LALT,        LSFT_T(KC_SPC),         KC_RALT, MO(MACRO),MO(SYMBL)
+     MO(RAISE),  KC_LGUI,   KC_LALT,        LSFT_T(KC_SPC),         KC_RALT, MO(SYS),MO(RAISE)
     ),
 
     [COLMAK] = LAYOUT_long_space(
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------------+--------+--------+--------+--------+--------+--------+--------+-------------|
           LT_LOW_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H, KC_COMM,     LT_LOW_D,
   //|---------+---------+---------+------------------------------+---------+---------+---------|
-     MO(SYMBL),  KC_LGUI,  KC_LALT,        LSFT_T(KC_SPC),          KC_RALT, MO(MACRO),MO(SYMBL)
+     MO(RAISE),  KC_LGUI,  KC_LALT,        LSFT_T(KC_SPC),          KC_RALT, MO(SYS),MO(RAISE)
     ),
 
     [LOWER] = LAYOUT_long_space(
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______,  _______,  _______,         KC_BSPC,                _______,  _______,   _______
     ),
 
-    [SYMBL] = LAYOUT_long_space(
+    [RAISE] = LAYOUT_long_space(
   //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
       S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),  S(KC_0),
   //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 //CA_F1,   CA_F2,   CA_F3  C__F9,   C__F12,
-    [MACRO] = LAYOUT_long_space(
+    [SYS] = LAYOUT_long_space(
   //|--------+--------+--------+--------+--------+--------+--------+--------+--------+---------|
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F12,
   //|---------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
